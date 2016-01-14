@@ -1,20 +1,22 @@
+[core]
+    editor = vim
 [color]
-  ui = true
+    ui = true
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  type = cat-file -t
-  dump = cat-file -p
-  pullr = pull --rebase
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    type = cat-file -t
+    dump = cat-file -p
+    pullr = pull --rebase
 [user]
-	name = Ketouem
-	email = ketouem@gmail.com
+    name = Ketouem
+    email = cyril.thomas@surycat.com
 [push]
-	default = upstream
+    default = current
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
