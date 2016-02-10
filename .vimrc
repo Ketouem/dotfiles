@@ -35,6 +35,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd VimEnter * NERDTree | wincmd p
 
 map <C-n> :NERDTreeToggle<CR>
+let mapleader = ","
 
 set tabstop=8
 set expandtab
