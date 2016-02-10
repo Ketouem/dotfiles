@@ -15,6 +15,7 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'The-NERD-Commenter'
 
 call vundle#end()
 " ------------------------------
