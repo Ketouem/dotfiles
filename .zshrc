@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/cyril/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,10 +53,10 @@ plugins=(git docker docker-compose pyenv virtualenvwrapper)
 
 # User configuration
 
-export PATH="/Users/cyril/.rbenv/shims:/Users/cyril/.pyenv/shims:/Users/cyril/miniconda3/bin:/Users/cyril/.pyenv/shims:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.rbenv/shims:/Users/cyril/.pyenv/shims:$HOME/miniconda3/bin:$HOME/.pyenv/shims:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-DEFAULT_USER="cyril"
+DEFAULT_USER="$USERNAME"
 export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
 export WORKON_HOME="$HOME/virtualenvs"
 
