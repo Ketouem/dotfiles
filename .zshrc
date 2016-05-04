@@ -92,4 +92,5 @@ alias dkrip='docker-machine ip dockerhost | pbcopy'
 alias dkrinit='eval "$(docker-machine env dockerhost)"'
 alias dkrnuke='docker kill `docker ps -q`; docker rm `docker ps -aq`; docker rmi `docker images -q`'
 alias dkrnone='docker images | grep "<none>[ ]*<none>" | tr -s " " | cut -d " " -f3 | xargs docker rmi -f'
+git() { if [ "$1" = "lg" ]; then /usr/local/bin/hub lg; true;else /usr/local/bin/hub $@; fi; }
 
