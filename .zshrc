@@ -59,9 +59,13 @@ export PATH="$HOME/.rbenv/shims:/Users/cyril/.pyenv/shims:$HOME/miniconda3/bin:$
 DEFAULT_USER="$USERNAME"
 export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
 export WORKON_HOME="$HOME/virtualenvs"
+export HOMEBREW_GITHUB_API_TOKEN=""
 
 eval "$(hub alias -s)"
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -92,5 +96,5 @@ alias dkrip='docker-machine ip dockerhost | pbcopy'
 alias dkrinit='eval "$(docker-machine env dockerhost)"'
 alias dkrnuke='docker kill `docker ps -q`; docker rm `docker ps -aq`; docker rmi `docker images -q`'
 alias dkrnone='docker images | grep "<none>[ ]*<none>" | tr -s " " | cut -d " " -f3 | xargs docker rmi -f'
+alias brupdate='brew update && brew upgrade --all && brew cleanup && brew cask cleanup'
 git() { if [ "$1" = "lg" ]; then /usr/local/bin/hub lg; true;else /usr/local/bin/hub $@; fi; }
-
