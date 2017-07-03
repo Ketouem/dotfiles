@@ -49,17 +49,14 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose pyenv virtualenvwrapper)
+plugins=(git docker docker-compose)
 
 # User configuration
 
-export PATH="$HOME/.rbenv/shims:/Users/cyril/.pyenv/shims:$HOME/miniconda3/bin:$HOME/.pyenv/shims:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 DEFAULT_USER="$USERNAME"
-export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
-export WORKON_HOME="$HOME/virtualenvs"
-export HOMEBREW_GITHUB_API_TOKEN=""
 
 eval "$(hub alias -s)"
 
@@ -67,6 +64,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -93,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias dkrip='docker-machine ip dockerhost | pbcopy'
-alias dkrinit='eval "$(docker-machine env dockerhost)"'
+alias docker='docker $(docker-machine config dockerhost)'
 alias dkrnuke='docker kill `docker ps -q`; docker rm `docker ps -aq`; docker rmi `docker images -q`'
 alias dkrnone='docker images | grep "<none>[ ]*<none>" | tr -s " " | cut -d " " -f3 | xargs docker rmi -f'
 alias brupdate='brew update && brew upgrade && brew cleanup && brew cask cleanup'
