@@ -14,7 +14,7 @@
     unadd = reset HEAD
 [user]
     name = Ketouem
-    email = cyril.thomas@surycat.com
+    email = ketouem@gmail.com
 [push]
     default = current
 [filter "lfs"]
