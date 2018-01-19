@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose)
+plugins=(git docker docker-compose colored-man-pages aws brew)
 
 # User configuration
 
@@ -92,9 +92,4 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dkrip='docker-machine ip dockerhost | pbcopy'
-alias docker='docker $(docker-machine config dockerhost)'
-alias dkrnuke='docker kill `docker ps -q`; docker rm `docker ps -aq`; docker rmi `docker images -q`'
-alias dkrnone='docker images | grep "<none>[ ]*<none>" | tr -s " " | cut -d " " -f3 | xargs docker rmi -f'
-alias brupdate='brew update && brew upgrade && brew cleanup && brew cask cleanup'
 git() { if [ "$1" = "lg" ]; then /usr/local/bin/hub lg; true;else /usr/local/bin/hub $@; fi; }
