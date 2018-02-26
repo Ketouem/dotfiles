@@ -17,11 +17,14 @@
     email = ketouem@gmail.com
 [push]
     default = current
+[fetch]
+    prune = true
+[pull]
+    rebase = true
+[merge]
+    ff = only
+    commit = no
 [filter "lfs"]
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
-[merge]
-    ff = only
-    commit = no
-
