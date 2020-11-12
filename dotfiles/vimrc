@@ -40,12 +40,23 @@ if (empty($TMUX))
   endif
 endif
 
+if has('gui_running')
+  set guifont=FiraCode-Retina:h11
+endif
+
 syntax on
 colorscheme onedark
 
 map <C-n> :NERDTreeToggle<CR>
+function! StartUp()
+  if argc() > 0
+    execute 'NERDTree' expand(argv(0))
+  else
+    execute 'NERDTree' expand('%:p:h')
+  endif
+endfunction
 " Open NERDTree in the input file directory 
-autocmd VimEnter * execute 'NERDTree' expand('%:p:h') 
+autocmd VimEnter * call StartUp()
 autocmd VimEnter * wincmd p 
 
 set number
