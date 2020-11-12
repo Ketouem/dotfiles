@@ -1,46 +1,56 @@
-" ---- Vundle configuration ----
-set nocompatible
-filetype off
+" ---- Plug configuration ----
+" auto-install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    echo "Installing VimPlug..."
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"  - Side nav bar
+Plug 'scrooloose/nerdtree'
+"  - Status bar
+Plug 'bling/vim-airline'
+"  - Git commands
+Plug 'tpope/vim-fugitive'
+"  - Theme onedark
+Plug 'joshdick/onedark.vim'
+"  - Language pack
+Plug 'sheerun/vim-polyglot'
+"  - Align code on demand
+Plug 'godlygeek/tabular'
 
-" Vundle plugins
-Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'The-NERD-Commenter'
-
-call vundle#end()
+call plug#end()
 " ------------------------------
 
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
 syntax on
-filetype plugin indent on
-
-set number
-set ruler
-highlight ColorColumn ctermbg=7
-set colorcolumn=80
-
-autocmd vimenter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd VimEnter * NERDTree | wincmd p
+colorscheme onedark
 
 map <C-n> :NERDTreeToggle<CR>
-let mapleader = ","
+" Open NERDTree in the input file directory 
+autocmd VimEnter * execute 'NERDTree' expand('%:p:h') 
+autocmd VimEnter * wincmd p 
 
-set tabstop=8
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-set backspace=indent,eol,start
-set mouse=a
+set number
+
+let NERDTreeShowHidden=1
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
 
