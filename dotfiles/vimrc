@@ -8,14 +8,20 @@ endif
 
 call plug#begin()
 
+" Plugins:
 "  - Side nav bar
 Plug 'scrooloose/nerdtree'
+"  - Fuzzy file finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+"  - Filetype glyphs
+Plug 'ryanoasis/vim-devicons'
 "  - Status bar
 Plug 'bling/vim-airline'
 "  - Git commands
 Plug 'tpope/vim-fugitive'
-"  - Theme onedark
-Plug 'joshdick/onedark.vim'
+"  - Theme solarized8
+Plug 'lifepillar/vim-solarized8'
 "  - Language pack
 Plug 'sheerun/vim-polyglot'
 "  - Align code on demand
@@ -41,11 +47,12 @@ if (empty($TMUX))
 endif
 
 if has('gui_running')
-  set guifont=FiraCode-Retina:h11
+  set guifont=FiraCodeNerdFontComplete-Retina:h12
 endif
 
 syntax on
-colorscheme onedark
+set background=dark
+colorscheme solarized8
 
 map <C-n> :NERDTreeToggle<CR>
 function! StartUp()
@@ -60,6 +67,7 @@ autocmd VimEnter * call StartUp()
 autocmd VimEnter * wincmd p 
 
 set number
+set encoding=utf-8
 
 let NERDTreeShowHidden=1
 let g:terraform_fmt_on_save=1
