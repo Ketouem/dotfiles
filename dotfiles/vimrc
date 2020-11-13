@@ -1,3 +1,7 @@
+set nocompatible
+syntax on
+filetype plugin indent on
+
 " ---- Plug configuration ----
 " auto-install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -24,6 +28,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'lifepillar/vim-solarized8'
 "  - Language pack
 Plug 'sheerun/vim-polyglot'
+"  - Terraform support
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 "  - Align code on demand
 Plug 'godlygeek/tabular'
 
@@ -50,10 +57,10 @@ if has('gui_running')
   set guifont=FiraCodeNerdFontComplete-Retina:h12
 endif
 
-syntax on
 set background=dark
 colorscheme solarized8
 
+" NERDTree Config
 map <C-n> :NERDTreeToggle<CR>
 function! StartUp()
   if argc() > 0
