@@ -15,6 +15,8 @@
 [user]
     name = Ketouem
     email = ketouem@gmail.com
+# Used for pgp signing, key id can be found with `gpg --list-keys --keyid-format LONG`
+#    signingkey = SIGNINKEY
 [push]
     default = current
 [fetch]
@@ -28,3 +30,6 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+# Loading another config file on specific path
+#[includeIf "gitdir:~/sources/folderName/"]
+#    path = ~/sources/folderName/.gitconfig-randomMoniker
